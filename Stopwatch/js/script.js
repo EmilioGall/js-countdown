@@ -89,6 +89,12 @@ pauseButtonElem.addEventListener("click", function() {
 
     printPartials(hours, minutes, seconds, cents);
 
+    stopButtonElem.addEventListener("click", function() {
+
+        clearInterval(stopwatch);
+
+    });
+    
 });
 
 resetButtonElem.addEventListener("click", function() {
