@@ -1,5 +1,5 @@
 /**
- * Description: function prints stopwatch.
+ * Description: function prints stopwatch on Display.
  * @param {number} h
  * @param {number} m
  * @param {number} s
@@ -16,6 +16,28 @@ function printStopwatch(h, m, s, c) {
     minutesDivElem.innerText = mStr;
     secondsDivElem.innerText = sStr;
     centsDivElem.innerText = cStr;
+
+};
+
+
+/**
+ * Description: function prints stopwatch on Partials List.
+ * @param {number} h
+ * @param {number} m
+ * @param {number} s
+ * @param {number} c
+ */
+function printPartials(h, m, s, c) {
+
+    let hStr = h <= 9 ? "0" + h.toString() : h.toString();
+    let mStr = m <= 9 ? "0" + m.toString() : m.toString();
+    let sStr = s <= 9 ? "0" + s.toString() : s.toString();
+    let cStr = c <= 9 ? "0" + c.toString() : c.toString();
+
+    partialsOlElem.innerHTML +=
+    `<li class="list-group-item">
+     ${hStr} : ${mStr} : ${sStr} : ${cStr}
+     </li>`;
 
 };
 

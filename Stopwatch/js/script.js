@@ -7,25 +7,21 @@
 ////////// BUTTONS ELEMENTS
 
 // Define constant for Start Button Element.
-
 const startButtonElem = document.getElementById("start");
 
 console.log("startButtonElem", startButtonElem, typeof startButtonElem);
 
 // Define constant for Pause Button Element.
-
 const pauseButtonElem = document.getElementById("pause");
 
 console.log("pauseButtonElem", pauseButtonElem, typeof pauseButtonElem);
 
 // Define constant for Stop Button Element.
-
 const stopButtonElem = document.getElementById("stop");
 
 console.log("stopButtonElem", stopButtonElem, typeof stopButtonElem);
 
 // Define constant for Reset Button Element.
-
 const resetButtonElem = document.getElementById("reset");
 
 console.log("resetButtonElem", resetButtonElem, typeof resetButtonElem);
@@ -33,28 +29,29 @@ console.log("resetButtonElem", resetButtonElem, typeof resetButtonElem);
 ////////// TIMER ELEMENTS
 
 // Define constant for Hours Div Element.
-
 const hoursDivElem = document.getElementById("hours");
 
 console.log("hoursDivElem", hoursDivElem, typeof hoursDivElem);
 
 // Define constant for Minutes Div Element.
-
 const minutesDivElem = document.getElementById("minutes");
 
 console.log("minutesDivElem", minutesDivElem, typeof minutesDivElem);
 
 // Define constant for Seconds Div Element.
-
 const secondsDivElem = document.getElementById("seconds");
 
 console.log("secondsDivElem", secondsDivElem, typeof secondsDivElem);
 
 // Define constant for Cents Div Element.
-
 const centsDivElem = document.getElementById("cents");
 
 console.log("centsDivElem", centsDivElem, typeof centsDivElem);
+
+// Define constant for Partials Ol Element.
+const partialsOlElem = document.getElementById("partials");
+
+console.log("partialsOlElem", partialsOlElem, typeof partialsOlElem);
 
 ////////// TIMER
 
@@ -72,19 +69,25 @@ let cents = 0;
 
 ////////// TIMER
 
-const stopwatch = "";
+let stopwatch = "";
 
 printStopwatch(hours, minutes, seconds, cents);
 
 startButtonElem.addEventListener("click", function() {
 
-    const stopwatch = setInterval(calcStopwatch, 10);
+    stopwatch = setInterval(calcStopwatch, 10);
 
-    pauseButtonElem.addEventListener("click", function() {
+    stopButtonElem.addEventListener("click", function() {
 
         clearInterval(stopwatch);
-      
+
     });
+
+});
+
+pauseButtonElem.addEventListener("click", function() {
+
+    printPartials(hours, minutes, seconds, cents);
 
 });
 
@@ -99,6 +102,8 @@ resetButtonElem.addEventListener("click", function() {
     let cents = 0;
 
     printStopwatch(hours, minutes, seconds, cents);
+
+    partialsOlElem.innerHTML = "";
 
 });
 
