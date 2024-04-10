@@ -4,64 +4,104 @@
 // Dopo averlo implementato fatevi questa domanda:
 // Che cosa succede se utente clicca sull'avvia più volte?
 
-let cents = 0;
-let seconds = 0;
-let minutes = 0;
+////////// BUTTONS ELEMENTS
+
+// Define constant for Start Button Element.
+
+const startButtonElem = document.getElementById("start");
+
+console.log("startButtonElem", startButtonElem, typeof startButtonElem);
+
+// Define constant for Pause Button Element.
+
+const pauseButtonElem = document.getElementById("pause");
+
+console.log("pauseButtonElem", pauseButtonElem, typeof pauseButtonElem);
+
+// Define constant for Stop Button Element.
+
+const stopButtonElem = document.getElementById("stop");
+
+console.log("stopButtonElem", stopButtonElem, typeof stopButtonElem);
+
+// Define constant for Reset Button Element.
+
+const resetButtonElem = document.getElementById("reset");
+
+console.log("resetButtonElem", resetButtonElem, typeof resetButtonElem);
+
+////////// TIMER ELEMENTS
+
+// Define constant for Hours Div Element.
+
+const hoursDivElem = document.getElementById("hours");
+
+console.log("hoursDivElem", hoursDivElem, typeof hoursDivElem);
+
+// Define constant for Minutes Div Element.
+
+const minutesDivElem = document.getElementById("minutes");
+
+console.log("minutesDivElem", minutesDivElem, typeof minutesDivElem);
+
+// Define constant for Seconds Div Element.
+
+const secondsDivElem = document.getElementById("seconds");
+
+console.log("secondsDivElem", secondsDivElem, typeof secondsDivElem);
+
+// Define constant for Cents Div Element.
+
+const centsDivElem = document.getElementById("cents");
+
+console.log("centsDivElem", centsDivElem, typeof centsDivElem);
+
+////////// TIMER
+
+// Define variable for Hours.
 let hours = 0;
 
-const centsElem = document.getElementById("cents")
+// Define variable for Minutes.
+let minutes = 0;
+
+// Define variable for Seconds.
+let seconds = 0;
+
+// Define variable for Cents.
+let cents = 0;
+
+////////// TIMER
+
+const stopwatch = "";
 
 printStopwatch(hours, minutes, seconds, cents);
 
-const clock = setInterval(function () {
+startButtonElem.addEventListener("click", function() {
 
-    if (seconds < 59) {
+    const stopwatch = setInterval(calcStopwatch, 10);
 
-        seconds++;
+    pauseButtonElem.addEventListener("click", function() {
 
-    } else if (minutes < 59) {
+        clearInterval(stopwatch);
+      
+    });
 
-        seconds = 0;
-        minutes++;
+});
 
-    } else if (hours < 23) {
+resetButtonElem.addEventListener("click", function() {
 
-        seconds = 0;
-        minutes = 0;
-        hours++;
+    let hours = 0;
 
-    } else {
-        seconds = 0;
-        minutes = 0;
-        hours = 0;
-    }
+    let minutes = 0;
+
+    let seconds = 0;
+
+    let cents = 0;
 
     printStopwatch(hours, minutes, seconds, cents);
-}, 1000);
 
-document.getElementById("stop").addEventListener("click", function() {
-  clearInterval(clock);
-})
+});
 
-/**
- * Description: funzione che stampa orario in pagina
- * @param {number} h
- * @param {number} m
- * @param {number} s
- */
-function printTime(h, m, s) {
-  // operatore ternario
-  let sStr = s <= 9 ? "0" + s.toString() : s.toString();
-  let hStr = h <= 9 ? "0" + h.toString() : h.toString();
-  let mStr = m <= 9 ? "0" + m.toString() : m.toString();
 
-  // if(s <= 9) {
-  //   sStr = "0" + s.toString();
-  // } else {
-  //   sStr = s.toString();
-  // }
 
-  document.getElementById("second").innerText = sStr;
-  document.getElementById("minute").innerText = mStr;
-  document.getElementById("hour").innerText = hStr;
-}
+
