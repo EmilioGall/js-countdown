@@ -73,13 +73,27 @@ let stopwatch = "";
 
 printStopwatch(hours, minutes, seconds, cents);
 
+let active = false;
+
 startButtonElem.addEventListener("click", function() {
 
-    stopwatch = setInterval(calcStopwatch, 10);
+
+    if (active === false) {
+
+        stopwatch = setInterval(calcStopwatch, 10);
+
+        console.log("stopwatch", stopwatch, typeof stopwatch);
+
+    };
+
+
+    active = true;
 
     stopButtonElem.addEventListener("click", function() {
 
         clearInterval(stopwatch);
+
+        active = false;
 
     });
 
